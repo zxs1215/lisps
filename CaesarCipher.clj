@@ -63,7 +63,7 @@
   (shift-char ch (- shift)))
   
 (defn decode-lower [s shift]
-  (apply str (map (partial decode-lower-char shift)s)))
+  (apply str (map (partial decode-lower-char shift) s)))
 
 (defn decode-str [s shift]
   (decode-lower (decode-first s shift) shift))  
