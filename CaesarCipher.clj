@@ -59,18 +59,18 @@
 (defn decode-first [s shift] 
   (subs s 2))
 
-(defn decode-lower-char [shift ch]
+(defn decode-rest-char [shift ch]
   (shift-char ch (- shift)))
   
-(defn decode-lower [s shift]
-  (apply str (map (partial decode-lower-char shift) s)))
+(defn decode-rest [s shift]
+  (apply str (map (partial decode-rest-char shift) s)))
 
 (defn decode-str [s shift]
-  (decode-lower (decode-first s shift) shift))  
+  (decode-rest (decode-first s shift) shift))  
   
 (defn mydecode [s shift] 
   (decode-str (clojure.string/join s) shift))
-
+  
 (defn decode [s] (mydecode s 1))
 
 
